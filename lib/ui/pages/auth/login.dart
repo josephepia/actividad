@@ -1,4 +1,3 @@
-
 import 'package:actividad/domain/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,39 +28,45 @@ class _LoginState extends State<Login> {
               CircleAvatar(
                 radius: 80,
                 backgroundImage: NetworkImage(
-                    'https://login.gov/assets/img/login-gov-288x288.png'
-                ),
+                    'https://login.gov/assets/img/login-gov-288x288.png'),
               ),
               TextField(
                 controller: controlUser,
-                decoration: const InputDecoration(labelText: "Ingrese el usuario"),
+                decoration:
+                    const InputDecoration(labelText: "Ingrese el usuario"),
               ),
               TextField(
                 controller: controlPass,
                 obscureText: true,
-                decoration: const InputDecoration(labelText: "Ingrese la contraseña"),
+                decoration:
+                    const InputDecoration(labelText: "Ingrese la contraseña"),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(onPressed: (){
-                    controladorUser.enviarDatos(http.Client(), controlUser.text, controlPass.text).then((value) {
-                      if(controladorUser.users != null){
-                        Get.offAllNamed('/principal');
-                      }else{
-                         Get.showSnackbar(
-                           const GetSnackBar(
-                             title: "Validacion de usuario",
-                             message: "Verifique el usuario o la contraseña",
-                             icon: Icon(Icons.person),
-                             duration: Duration(seconds: 3),
-                           )
-                        );
-                      }
-                    });
-                  }, icon: const Icon(Icons.login)),
+                  IconButton(
+                      onPressed: () {
+                        controladorUser
+                            .enviarDatos(http.Client(), controlUser.text,
+                                controlPass.text)
+                            .then((value) {
+                          if (controladorUser.users != null) {
+                            Get.offAllNamed('/principal');
+                          } else {
+                            Get.showSnackbar(const GetSnackBar(
+                              title: "Validacion de usuario",
+                              message: "Verifique el usuario o la contraseña",
+                              icon: Icon(Icons.person),
+                              duration: Duration(seconds: 3),
+                            ));
+                          }
+                        });
+                      },
+                      icon: const Icon(Icons.login)),
                   const SizedBox(width: 10),
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.app_registration)),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.app_registration)),
                 ],
               )
             ],
