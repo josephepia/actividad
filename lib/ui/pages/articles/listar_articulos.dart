@@ -18,7 +18,7 @@ class _ListarArticulosState extends State<ListarArticulos> {
     controladorArticulo.consultaArticulos();
     return Scaffold(
       body: Obx(
-          () => controladorArticulo.getArticulosGral?.isEmpty == true?
+          () => controladorArticulo.getArticulosGral?.isEmpty == false?
               ListView.builder(
                 itemCount: controladorArticulo.getArticulosGral?.isEmpty == true ? 0 :
                 controladorArticulo.getArticulosGral!.length,

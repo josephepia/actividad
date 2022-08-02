@@ -48,13 +48,15 @@ class PeticionesArticulo {
  }
 
  static Future<dynamic> consultaGral() async {
-   await _db.collection("Articulos").get().then((value) {
-     List<Articulo> lista = [];
-     for(var doc in value.docs){
+
+   List<Articulo> lista = [];
+
+   await _db.collection("Articulos").get().then((respuesta) {
+     for (var doc in respuesta.docs) {
+       log(doc.data().toString());
        lista.add(Articulo.desdeJson(doc.data()));
      }
-
-     return lista;
    });
+   return lista;
  }
 }
