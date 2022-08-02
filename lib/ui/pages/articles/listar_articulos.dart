@@ -23,22 +23,35 @@ class _ListarArticulosState extends State<ListarArticulos> {
                 itemCount: controladorArticulo.getArticulosGral?.isEmpty == true ? 0 :
                 controladorArticulo.getArticulosGral!.length,
                 itemBuilder: (context, posicion){
-                  return ListTile(
-                    leading: Container(
-                      padding: EdgeInsets.all(5),
-                      width: 50,
-                      height: 50,
-                      child: Image.network(
-                        controladorArticulo.getArticulosGral![posicion].foto
-                      ),
+                  return Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        new BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          blurRadius: 20.0
+                        )
+                      ]
                     ),
-                    title: Text(controladorArticulo.getArticulosGral![posicion].detalle),
-                    subtitle: Text(controladorArticulo.getArticulosGral![posicion].marca),
-                    trailing: Container(
-                      width: 80,
-                      height: 40,
-                      color: Colors.yellow,
-                      child: Text(controladorArticulo.getArticulosGral![posicion].cantBodega),
+                    child: Card(
+                      elevation: 0,
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(controladorArticulo.getArticulosGral![posicion].foto),
+                        ),
+                        title: Text(controladorArticulo.getArticulosGral![posicion].detalle),
+                        subtitle: Text(controladorArticulo.getArticulosGral![posicion].marca),
+                        trailing: Container(
+                          width: 80,
+                          height: 40,
+                          // color: Colors.yellow,
+                          child: Text(
+                              controladorArticulo.getArticulosGral![posicion].cantBodega,
+                            style: const TextStyle(
+                              fontSize: 30,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
