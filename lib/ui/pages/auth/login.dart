@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
                   IconButton(
                       onPressed: () {
                         controladorUser
-                            .enviarDatos(http.Client(), controlUser.text,
+                            .enviarDatos(controlUser.text,
                                 controlPass.text)
                             .then((value) {
                           if (controladorUser.users != null) {

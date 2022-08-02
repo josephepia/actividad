@@ -1,4 +1,6 @@
 import 'package:actividad/domain/controller/auth_controller.dart';
+import 'package:actividad/ui/pages/articles/listar_articulos.dart';
+import 'package:actividad/ui/pages/usuarios/listar_user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,27 +15,28 @@ class _PrincipalState extends State<Principal> {
   AuthController controladorUser = Get.find();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Menu principal"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(controladorUser.users![0].id),
-            Text(controladorUser.users![0].nombre),
-            Text(controladorUser.users![0].rol),
-            Text(controladorUser.users![0].user),
-            ElevatedButton(
-                onPressed: (){
-                  Get.offAllNamed('/auth');
-                },
-                child: const Text("salir")
-            )
-          ],
-        ),
-      ),
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("Menú principal"),
+            actions: [
+              IconButton(onPressed: (){}, icon: Icon(Icons.logout))
+            ],
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.verified_user)),
+                Tab(icon: Icon(Icons.checklist))
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              ListarUsers(),
+              ListarArticulos()
+            ],
+          ),
+        )
     );
   }
 }

@@ -9,10 +9,9 @@ class AuthController extends GetxController {
   List<User>? get users => _users.value;
 
   Future<void> enviarDatos(
-      http.Client client,
       String user,
       String pass
       ) async{
-    _users.value = await PeticionUser.validarUser(client, user, pass);
+    _users.value = await PeticionUser.validarUser(user, pass);
   }
 }
