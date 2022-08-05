@@ -4,6 +4,7 @@ import 'package:actividad/firebase_options.dart';
 import 'package:actividad/ui/pages/articles/creararticulos.dart';
 import 'package:actividad/ui/pages/articles/listar_articulos.dart';
 import 'package:actividad/ui/pages/auth/login.dart';
+import 'package:actividad/ui/pages/auth/register.dart';
 import 'package:actividad/ui/pages/content/principal.dart';
 import 'package:actividad/ui/pages/usuarios/listar_user.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/listarusers': (context) => const ListarUsers(),
         '/listararticulos': (context) => const ListarArticulos(),
         '/creararticulos': (context) => const CrearArticulos(),
+        '/registeruser': (context) => const Register(),
       },
     );
   }

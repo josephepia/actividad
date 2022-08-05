@@ -14,4 +14,14 @@ class AuthController extends GetxController {
       ) async{
     _users.value = await PeticionUser.validarUser(user, pass);
   }
+
+  Future<void> listUsers() async{
+    _users.value = await PeticionUser.allUsers();
+  }
+
+  Future<String> registrarUser(
+      Map<String, dynamic> user
+      ) async{
+    return PeticionUser.registerUser(user);
+  }
 }

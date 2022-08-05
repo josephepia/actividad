@@ -65,7 +65,9 @@ class _LoginState extends State<Login> {
                       icon: const Icon(Icons.login)),
                   const SizedBox(width: 10),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed('/registeruser');
+                      },
                       icon: const Icon(Icons.app_registration)),
                 ],
               )

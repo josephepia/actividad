@@ -1,4 +1,6 @@
 import 'package:actividad/domain/controller/articulos_controller.dart';
+import 'package:actividad/domain/models/articulo.dart';
+import 'package:actividad/ui/widgets/card_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,36 +25,11 @@ class _ListarArticulosState extends State<ListarArticulos> {
                 itemCount: controladorArticulo.getArticulosGral?.isEmpty == true ? 0 :
                 controladorArticulo.getArticulosGral!.length,
                 itemBuilder: (context, posicion){
-                  return Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 20.0
-                        )
-                      ]
-                    ),
-                    child: Card(
-                      elevation: 0,
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(controladorArticulo.getArticulosGral![posicion].foto),
-                        ),
-                        title: Text(controladorArticulo.getArticulosGral![posicion].detalle),
-                        subtitle: Text(controladorArticulo.getArticulosGral![posicion].marca),
-                        trailing: Container(
-                          width: 80,
-                          height: 40,
-                          // color: Colors.yellow,
-                          child: Text(
-                              controladorArticulo.getArticulosGral![posicion].cantBodega,
-                            style: const TextStyle(
-                              fontSize: 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  return CardItemList(
+                    imageLeadingUrl: controladorArticulo.getArticulosGral![posicion].foto,
+                    title: controladorArticulo.getArticulosGral![posicion].detalle,
+                    subtitle: controladorArticulo.getArticulosGral![posicion].marca,
+                    trailing: controladorArticulo.getArticulosGral![posicion].cantBodega,
                   );
                 },
               ) : const Icon(Icons.abc)
